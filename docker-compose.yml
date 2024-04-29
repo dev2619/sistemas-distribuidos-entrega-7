@@ -1,27 +1,20 @@
-version: "3"
+version: "3.8"
 
 services:
   master:
     build:
-      context: ./master
-    networks:
-      - numeroPI
-      - public_network
-
-  node-0:
-    build:
-      context: ./node
+      context: .
+      dockerfile: Dockerfile_master
     networks:
       - numeroPI
 
-  node-1:
+  nodo:
     build:
-      context: ./node
+      context: .
+      dockerfile: Dockerfile_nodo
     networks:
       - numeroPI
 
 networks:
   numeroPI:
-    driver: bridge
-  public_network:
     driver: bridge

@@ -1,0 +1,14 @@
+FROM rust:latest
+
+# Instalar las dependencias necesarias para MPI y Rust
+RUN apt-get update && \
+    apt-get install -y openmpi-bin libopenmpi-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copiar el código fuente y compilarlo
+COPY calcular_pi.rs .
+RUN rustc -o calcular_pi calcular_pi.rs
+
+CMD ["mpirun", "-np", "1", "./calcular_pi"]
