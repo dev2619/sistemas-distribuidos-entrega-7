@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  master:
+    build:
+      context: ./master
+    networks:
+      - numeroPI
+      - public_network
+
+  node-0:
+    build:
+      context: ./node
+    networks:
+      - numeroPI
+
+  node-1:
+    build:
+      context: ./node
+    networks:
+      - numeroPI
+
+networks:
+  numeroPI:
+    driver: bridge
+  public_network:
+    driver: bridge
