@@ -8,7 +8,14 @@ services:
     networks:
       - numeroPI
 
-  nodo:
+  nodo-0:
+    build:
+      context: .
+      dockerfile: Dockerfile_nodo
+    networks:
+      - numeroPI
+
+  nodo-1:
     build:
       context: .
       dockerfile: Dockerfile_nodo
